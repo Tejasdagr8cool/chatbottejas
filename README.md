@@ -1,1 +1,9 @@
 # chatbottejas
+This code implements a simple chatbot that can respond to user input based on predefined responses. The chatbot breaks down user messages and matches them against a list of known words, returning the best response based on a probability system.
+
+Key Components:
+message_probability Function: This function calculates how likely it is that a user’s message matches a predefined set of words. It checks if the required words are present in the user's message and calculates the percentage of recognized words. If either the required words are present or the response allows for a single response, it returns a probability score for that response.
+check_all_messages Function: This function defines a list of potential responses and their associated keywords. It uses the message_probability function to score each potential response and determines which one best fits the user’s input. If no suitable match is found (with a score less than 1), it calls the unknown function to generate a fallback response.
+get_response Function: This is the function that processes user input. It first breaks the input into a list of words using regular expressions, then passes this list to check_all_messages, which returns the most appropriate response.
+long_responses Module: The script references a long_responses module that contains longer responses for more complex queries. For example, if a user asks for advice or inquires about what the bot eats, predefined responses (R_ADVICE and R_EATING) are stored in this external module. The unknown function generates random fallback responses if none of the predefined options fit.
+User Interaction: The bot continuously asks for user input in a loop. For each user message, it processes the input and prints a response from the bot. It provides simple conversation features such as greetings, gratitude, asking how the bot is, etc., along with longer responses for more specific questions.
